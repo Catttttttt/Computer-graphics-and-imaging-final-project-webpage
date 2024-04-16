@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    background-color: white;
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  kbd {
+    color: #121212;
+  }
+</style>
+<title>CS 184 Path Tracer</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+
+
+<body>
+
+    <h1 align="middle">CS 184 Final Project: Cool Shaders</h1>
+    <h2 align="middle">Milestone</h2>
+    <h2 align="middle">Group Members: Alexander Sun, Ryland Hu, Sydney Tang, Jaeha Yi</h2>
+
+    <h2 align="middle">Website URL: <a href="https://catttttttt.github.io/Computer-graphics-and-imaging-final-project/Webpage/Milestone/index.html">HERE</a></h2>
+    <h2 align="middle">Slides URL: <a href="https://docs.google.com/presentation/d/12vVw4mRZP203DDa7OKV-fEOxhsFyWRW5FJbN2A8axTs/edit?usp=sharing">HERE</a></h2>
+    <h2 align="middle">Video URL: <a href="https://drive.google.com/file/d/1k0W-NzoGX1fQ0TyJESUljJaxMGTBNJXD/view?usp=sharing">HERE</a></h2>
+
+
+    <!-- <p>TODO: find references of shaders/resources/webpages of other shaders we want to implement, video, webpage, second shader, and turn in google form</p> -->
+
+    
+    <div>
+    
+
+    <h2 align="middle">Summary</h2>
+    <p>
+      We successfully implemented the non-photorealistic rendering (NPR) and applied the texture shaders to the clothsim from homework 4 to create an artistic effect. 
+      <p>
+        We created a shader with discrete brightness levels by editting the phong shader in order to get flat colors with different levels of RGB value. In addition, we added rim lighting in order to draw the outline of the objects, which makes them look more like animation.
+  
+      </p>
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/phong_cloth.png" align="middle" width="50%">
+          </td>
+          <td>
+              <img src="images/phong_cloth_blue.png" align="middle" width="50%">
+          </td>
+        </tr>
+      </tbody></table>
+    
+    </p>
+    <br>
+ 
+    
+    <p>
+      We also edited the texture shader to figure out how to put in a texture as a single shade, and made it so that the texture displayed as a flat image parallel to the plane.
+      <div align="middle">
+        <table style="width:100%">
+          <tbody><tr align="center">
+            <td>
+                <img src="images/polkadot_cloth.png" align="middle" width="50%">
+            </td>
+            <td>
+                <img src="images/polkadot_cloth2.png" align="middle" width="50%">
+            </td>
+          </tr>
+        </tbody></table>
+    </p>
+
+    <h2 align="middle">Reflection</h2>
+    <p>
+
+
+        We are on track for our milestone. We were able to customize our shader and create a non-photorealistic look with discrete brightness levels, an outline to the rim of the object, and custom textures for the shadows. 
+        We were able to add polka dot patterns to dark shadows, commmonly used in manga-style art with screentones.  
+    </p>
+    <p>
+        We wanted to do one shader per person, and experimenting with more shaders will likely be a goal to achieve moving forward. 
+   </p>
+    <p>
+        We saw that the homework code did not allow for general .obj files, because there wasn't geometry support for triangles (only planes and spheres). We want to add support for rendering general .obj files. 
+    </p>
+   
+    <br>
+
+</body>
