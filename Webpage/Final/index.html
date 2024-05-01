@@ -85,6 +85,7 @@
         A description of problems encountered and how you tackled them.
         A description of lessons learned.
     </p>
+    <br>
 
       <h3 align="middle">Toon shader</h3>
         <p>
@@ -105,6 +106,7 @@
             </td>
           </tr>
         </tbody></table>    
+        <br>
 
       <h3 align="middle">Hatching shader</h3>
         <p>
@@ -116,10 +118,15 @@
         <p>
           Comparing with the reference, we implemented a simplified version of the tonal blending technique, focusing on blending between textures based on brightness values rather than a comprehensive 6-way blend. Since GLSL only allow 4 textures imported, we restrict our levels to 4 only. In addition, it's hard to find tonal art maps with high resolution online. Hence, we used pure white as a part of mipmaps.
         </p>
-        <td>
-          <img src="./images/hatching/textures.png" align="middle" width="75%"/>
-          <figcaption align="middle">Different levels of mipmap used for hatching</figcaption>
-        </td>
+        <table style="width:100%">
+          <tbody><tr align="center">
+            <td>
+                <img src="./images/hatching/textures.png" align="middle" width="80%">
+                <figcaption align="middle">Different levels of mipmap used for hatching</figcaption>
+            </td>
+          </tr>
+        </tbody></table>
+        <br><br>
 
         <h3 align="middle">Painter-like shader</h3>
         <p>
@@ -250,18 +257,18 @@
           </tbody></table>
 
 
-
+<br>
       <h3 align="middle">Hatching shader</h3>
       <table style="width:100%">
         <tbody><tr align="center">
           <td>
               <img src="images/hatching/cloth&sphere.png" align="middle" width="50%">
-              <figcaption align="middle">front view of both the sphere and the cloth before simulation - hatching </figcaption>
+              <figcaption align="middle">front view before simulation - hatching </figcaption>
 
           </td>
           <td>
               <img src="images/hatching/falling_cloth_top.png" align="middle" width="50%">
-              <figcaption align="middle">top view of the cloth during simulation - hatching</figcaption>
+              <figcaption align="middle">top view during simulation - hatching</figcaption>
           </td>
         </tr>
       </tbody></table>
@@ -270,24 +277,27 @@
         <tbody><tr align="center">
           <td>
               <img src="images/hatching/falling_cloth_front.png" align="middle" width="50%">
-              <figcaption align="middle">front view of both the sphere and the cloth during simulation - hatching</figcaption>
+              <figcaption align="middle">front view during simulation - hatching</figcaption>
           </td>
           <td>
               <img src="images/hatching/cloth_on_sphere.png" align="middle" width="50%">
-              <figcaption align="middle">front view of both the sphere and the cloth after simulation - hatching</figcaption>
+              <figcaption align="middle">front view after simulation - hatching</figcaption>
           </td>
         </tr>
       </tbody></table>
+
+      <br>
 
       <h3 align="middle">Shaders in Unity</h3>
       <table style="width:100%">
         <tbody><tr align="center">
           <td>
-              <img src="images/unity/unity0.png" align="middle" width="100%">
+              <img src="images/unity/unity0.png" align="middle" width="80%">
               <figcaption align="middle">From right to left: textured shadow toon shader, toon shader, hatching shader, phong shader</figcaption>
           </td>
         </tr>
       </tbody></table>
+      <br>
 
       <table style="width:100%">
         <tbody><tr align="center">
@@ -314,9 +324,10 @@
           </td>
         </tr>
       </tbody></table>
+      <br><br>
 
       <h3 align="middle">Watercolor simulation shader</h3>
-      <table style="width:100%">
+      <table style="width:80%">
         <tbody><tr align="center">
           <td>
               <img src="./images/watercolor1/fruits1_crop.png" align="middle" width="100%">
