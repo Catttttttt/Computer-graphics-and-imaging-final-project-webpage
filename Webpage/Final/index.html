@@ -110,20 +110,37 @@
 
         <h3 align="middle">Watercolor shader</h3>
         <p>
-          This shader is based on the paper "Modeling Watercolor by Simulating Diffusion, Pigment, and Paper Fibers" by David Small. </p>
-        <p>
           We achieve a watercolor-like effect by modeling the movement of water and pigments. Each pixel of the input image is thought of as a group of paper fibers, which have an absorbency, water and pigment content, etc. Each pixel communicates with its neighbors, which allows us to model diffusion effects of the watercolor. 
         </p>
 
         <p>
-            The simulation consists of three steps. 
             <ol>
-                <li>Surface effects</li>  
-                <li>Substrate effects</li>
+                <li>Surface effects: The water and pigments on the surface of the paper experience the forces of surface tension and gravity. 
+
+                For surface tension in the horizontal direction, we have
+                \[D_x = s * \]
+                    
+                We first simulate surface tension by computing the gradient of water content for each pixel. The force is proportional to this gradient. We update the water and pigment values using this gradient.
+
+                
+                </li> 
                 <li>Paper absorption</li>
             </ol>
 
         </p>
+
+        <div style="text-align: center;">
+            <figure>
+                <img src="./images/watercolor1/animated_fruits.gif" alt="Example GIF" style="width: 50%;">
+                <figcaption>GIF of the watercolor diffusion</figcaption>
+            </figure>
+        </div>
+
+        <p>
+            This shader was inspired by "Modeling Watercolor by Simulating Diffusion, Pigment, and Paper Fibers" by David Small. However, all implementation details and code are original. 
+
+            We simplified many of the simulation equations presented in the paper, allowing us to vectorize all of the operations. Our code runs in seconds.
+        <p>
         
 
     </p>
