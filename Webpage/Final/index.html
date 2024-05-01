@@ -113,7 +113,14 @@
           We achieve a watercolor-like effect by modeling the movement of water and pigments. Each pixel of the input image is thought of as a group of paper fibers, which have an absorbency, water and pigment content, etc. Each pixel communicates with its neighbors, which allows us to model diffusion effects of the watercolor. 
         </p>
 
-        <p>
+        <div style="text-align: center;">
+            <figure>
+                <img src="./images/watercolor1/pixel_diagram.png" alt="Example GIF" style="width: 30%;">
+                <figcaption>Pixel communication structure</figcaption>
+            </figure>
+        </div>
+
+        <p> Each timestep of our simulation consists of the following:
             <ol>
                 <li>Surface tension: The water and pigments on the surface of the paper experience surface tension, which is an attraction force. Let W_s be a $w * h$ array of the water levels at each pixel, and P_s be a $w * h * 3$ array of the pigment CMY levels at each pixel. 
 
@@ -139,20 +146,13 @@
                 where $D$ is the water transported from the surface to the paper. A similar equation governs the transport of each pigment.
                 </li>
             </ol>
+
+            To render the final image, we take the RGB values of our paper texture and subtract the CMY pigment values. The paper texture adds an artistic touch to our result.
         </p>
 
         <p>
-            This shader was inspired by "Modeling Watercolor by Simulating Diffusion, Pigment, and Paper Fibers" by David Small. However, all implementation details and code are original. 
-
-            The code was done in Python. It is completely original, and we vectorized all of the operations for efficiency. To create the GIF below, with 11 simulation steps, takes 4 seconds.
+            This watercolor shader was heavily inspired by "Modeling Watercolor by Simulating Diffusion, Pigment, and Paper Fibers" by David Small. While our concepts are similar, our equations governing the simulation and all code are original. We additionally vectorized all of the operations for efficiency.
         <p>
-
-        <div style="text-align: center;">
-            <figure>
-                <img src="./images/watercolor1/fruits_cropp.gif" alt="Example GIF" style="width: 50%;">
-                <figcaption>GIF of the watercolor diffusion</figcaption>
-            </figure>
-        </div>
         
 
     </p>
@@ -161,6 +161,13 @@
     <h2 align="middle">Results </h2>
     <p>      
       Your final images, animations, video of your system (whichever is relevant). You can include results that you think show off what you built but that you did not have time to go over on presentation day.
+
+      <div style="text-align: center;">
+        <figure>
+            <img src="./images/watercolor1/fruits_cropp.gif" alt="Example GIF" style="width: 50%;">
+            <figcaption>GIF of the watercolor diffusion</figcaption>
+        </figure>
+    </div>
 
       <h3 align="middle">Toon shader</h3>
       <table style="width:100%">
