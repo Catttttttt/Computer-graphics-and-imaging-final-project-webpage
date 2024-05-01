@@ -118,7 +118,7 @@
           
         </p>
         <p>
-          <b>Challenges:</b> We had difficulties modifying the homework 4's OpenGL pipeline to allow post-processing filters and custom meshes, so we decided to implement this shader in the Unity game engine. This required time in learning Unity's shaders and render pipeline. Another challenge was that the original Kuwahara filter had blocky artifacts, especially in high frequency regions (like hair). We found a reference for a Kuwahara shader using Sobel edge detection in Unity shader language, which rotated filter regions to match the orientation of the edge. This does a great job of preserving edges and removing artifacts. 
+          <b>Challenges:</b> We had difficulties modifying the homework 4's OpenGL pipeline to allow post-processing filters and custom meshes, so we decided to implement this shader in the Unity game engine. This required time in learning Unity's shaders and render pipeline. Another challenge was that the original Kuwahara filter had blocky artifacts, especially in high frequency regions (like hair). We found a reference for a Kuwahara shader using Sobel edge detection in Unity shader language (by Giacomo Tagliaventi), which rotated filter regions to match the orientation of the edge. This does a great job of preserving edges and removing artifacts. 
         </p>
         <table style="width:100%">
           <tbody><tr align="center">
@@ -134,7 +134,7 @@
           </tr>
         </tbody></table>
         <p>
-          <b>Lessons:</b> The original Kuwahara filter was provided in GLSL, and we learned to translate GLSL to Unity's HLSL shaders. None of us had Unity shader experience, and we learned to modify Unity's fragment shaders, pass variables to shaders, and apply post-processing in Unity, which requires the shader being attached to Unity's camera object. 
+          <b>Lessons:</b> The initial Kuwahara filter was provided in GLSL from "Anisotropic Kuwahara Filtering on the GPU," and we learned to translate GLSL to Unity's HLSL shaders. None of us had Unity shader experience, and we learned to modify Unity's fragment shaders, pass variables to shaders, and apply post-processing in Unity, which requires the shader being attached to Unity's camera object. 
         </p>
 
         <h3 align="middle">Watercolor simulation shader</h3>
