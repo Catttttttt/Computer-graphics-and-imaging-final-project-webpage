@@ -19,7 +19,7 @@
     color: #121212;
   }
 </style>
-<title>CS 184 Path Tracer</title>
+<title>Cool Shaders</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
 
@@ -44,6 +44,8 @@
     <h2 align="middle">Group Members: Alexander Sun, Ryland Hu, Sydney Tang, Jaeha Yi</h2>
 
     <h2 align="middle">Website URL: <a href="https://catttttttt.github.io/Computer-graphics-and-imaging-final-project-webpage/Webpage/Final/index.html">HERE</a></h2>
+
+    <h3 align="middle"> <a href="https://drive.google.com/file/d/150N4m4m0FekrUCE0nh6m6k_zPrRJAMfa/view?usp=sharing">Video link</a></h3>
 
     
     <br><br>
@@ -171,7 +173,7 @@
 
         <p> Each timestep of our simulation consists of the following:
             <ol>
-                <li>Surface tension: The water and pigments on the surface of the paper experience surface tension, which is an attraction force. Let W_s be a $w * h$ array of the water levels at each pixel, and P_s be a $w * h * 3$ array of the pigment CMY levels at each pixel. 
+                <li>Surface tension: The water and pigments on the surface of the paper experience surface tension, which is an attraction force. Let W_s be a $h * w$ array of the water levels at each pixel, and P_s be a $h * w * 3$ array of the pigment CMY levels at each pixel. 
 
                 For surface tension in the horizontal direction, we have
                 \[D_x = s * \frac{W[i][j+1] - W[i][j]}{W[i][j]}\]
@@ -190,7 +192,7 @@
 
                 This captures how each pixel's water and pigment content is blended with its neighbors'. Here, $g$ is a gravitational constant. We apply this convolution to $W_s$, as well as to each channel of $P_s$.
                 </li>
-                <li>Paper absorption: In our simulation, the canvas gradually absorbs the water and pigments, locking them into place. Let $A$ be a $w * h$ array of absorbancy values, $W_i$ and $P_i$ be the water and pigment content infused in the paper. We have 
+                <li>Paper absorption: In our simulation, the canvas gradually absorbs the water and pigments, locking them into place. Let $A$ be a $h * w$ array of absorbancy values, $W_i$ and $P_i$ be the water and pigment content infused in the paper. We have 
                     \[D = k * A * W_s\]
                 where $D$ is the water transported from the surface to the paper. A similar equation governs the transport of each pigment.
                 </li>
@@ -200,7 +202,7 @@
         </p>
 
         <p>
-            This watercolor shader was heavily inspired by "Modeling Watercolor by Simulating Diffusion, Pigment, and Paper Fibers" by David Small. While our concepts are similar, some equations governing the simulation and all code are original. In particular, we modeled the effect of gravity by a convolution, while Small had a constant force pulling towards the bottom-right corner of the paper. We additionally vectorized all of the operations for efficiency.
+            This watercolor shader was heavily inspired by "Modeling Watercolor by Simulating Diffusion, Pigment, and Paper Fibers" by David Small. While our concepts are similar, some equations governing the simulation and all code are original. For instance, we modeled the effect of gravity by a convolution, while Small had a constant force pulling towards the bottom-right corner of the paper. We additionally vectorized all of the operations for efficiency.
         <p>
     <br>
 
@@ -406,7 +408,7 @@
 
     <h2 align="middle">Contributions</h2>
     <p align="left">
-      Alexander Sun: Wrote watercolor simulation, co-wrote toon and watercolor shaders, experimented with rendering custom meshes using homework 4 code, helped debug shaders, helped create the website, and made the videos. 
+      Alexander Sun: Wrote watercolor simulation, co-wrote toon shaders, experimented with rendering custom meshes using homework 4 code, helped debug shaders, helped create the website, and made the slides and videos. 
     </p>
 
     <p align="left">
