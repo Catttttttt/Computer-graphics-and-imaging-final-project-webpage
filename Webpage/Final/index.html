@@ -115,15 +115,25 @@
 
         <p>
             <ol>
-                <li>Surface effects: The water and pigments on the surface of the paper experience the forces of surface tension and gravity. 
+                <li>Surface tension: The water and pigments on the surface of the paper experience surface tension, which is an attraction force. Let W be a $w * h$ array of the water levels at each pixel, and P be a $w * h * 3$ array of the pigment CMY levels at each pixel. 
 
                 For surface tension in the horizontal direction, we have
-                \[D_x = s * \]
-                    
-                We first simulate surface tension by computing the gradient of water content for each pixel. The force is proportional to this gradient. We update the water and pigment values using this gradient.
+                \[D_x = s * \frac{W[i][j+1] - W[i][j]}{W[i][j]}\]
+                \[D_y = s * \frac{W[i+1][j] - W[i][j]}{W[i][j]}\]
 
-                
-                </li> 
+                Where $D_x$ is the percentage of water/pigment content to transport right, and $s$ is the constant of surface tension. A negative value represents transport left. Similarly for $D_y$.</li>
+                <li>Gravity: The water and pigments on the surface of the paper experience gravity, which disperses them. We achieve this by a convolution with the filter 
+
+                    \[
+                        \begin{bmatrix}
+                        g/8 & g/8 & g/8 \\
+                        g/8 & 1-g & g/8 \\
+                        g/8 & g/8 & g/8 \\
+                        \end{bmatrix}
+                    \]
+
+                Which captures how each pixel's water and pigment content is blended with its neighbors'. Here, $g$ is a gravitational constant. We apply this convolution to $W$, as well as to each channel of $P$.
+                </li>
                 <li>Paper absorption</li>
             </ol>
 
