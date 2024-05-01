@@ -54,12 +54,8 @@
 
     <h2 align="middle">Abstract</h2>
     <p>      
-      In this project, we implemented a few non-photorealistic shaders.   
-
-        
-
-
-      
+      In this project, we implemented a few non-photorealistic shader in OpenGL and Unity. Building off of the code in homework 4, we created a toon shader (with textured shadows) and a hatching shader in GLSL.  
+      We integrated these shaders into the Unity game engine to render additional 3D meshes and create a watercolor shader and paint-like shader, which are both post-processing effects.  
     </p>
     <br>
 
@@ -108,6 +104,38 @@
           <img src="./images/hatching/textures.png" align="middle" width="75%"/>
           <figcaption align="middle">Different levels of mipmap used for hatching</figcaption>
         </td>
+
+        <h3 align="middle">Painter-like shader</h3>
+        <p>
+          <b>Approach:</b> We utilized Kuwahara filters to create a paint-like shader, which is applied in the post-processing step after objects are rendered. The Kuwahara filter reduces image noise and preserves edges, creating an image that looks painted. 
+        </p>  
+        <p>
+          The algorithm calculates the average and variance (i.e. standard deviation) of pixel values in four regions surrounding the pixel. The area with the smallest variance will be chosen, and that area's average value will be the pixel's value. 
+          Edges avoid blurring because pixels on one side of the edge favor the region on its own side (due it being more homogenous). This preverses the distinct sides of edges. 
+        </p>
+        <p>
+          
+          
+        </p>
+        <p>
+          <b>Challenges:</b> We had difficulties modifying the homework 4's OpenGL pipeline to allow post-processing filters and custom meshes, so we decided to implement this shader in the Unity game engine. This required time in learning Unity's shaders and render pipeline. Another challenge was that the original Kuwahara filter had blocky artifacts, especially in high frequency regions (like hair). We found a reference for a Kuwahara shader using Sobel edge detection in Unity shader language, which rotated filter regions to match the orientation of the edge. This does a great job of preserving edges and removing artifacts. 
+        </p>
+        <table style="width:100%">
+          <tbody><tr align="center">
+            <td>
+                <img src="images/painter/kuwahara0.png" align="middle" width="50%">
+                <figcaption align="middle">simple kuwahara filter</figcaption>
+  
+            </td>
+            <td>
+                <img src="images/painter/kuwahara1.png" align="middle" width="50%">
+                <figcaption align="middle">advanced kuwahara filter with edge-oriented regions</figcaption>
+            </td>
+          </tr>
+        </tbody></table>
+        <p>
+          <b>Lessons:</b> The original Kuwahara filter was provided in GLSL, and we learned to translate GLSL to Unity's HLSL shaders. None of us had Unity shader experience, and we learned to modify Unity's fragment shaders, pass variables to shaders, and apply post-processing in Unity, which requires the shader being attached to Unity's camera object. 
+        </p>
 
         <h3 align="middle">Watercolor simulation shader</h3>
         <p>
@@ -160,19 +188,7 @@
     <p>      
       Your final images, animations, video of your system (whichever is relevant). You can include results that you think show off what you built but that you did not have time to go over on presentation day.
 
-        <h3 align="middle">Watercolor simulation shader</h3>
-        <table style="width:100%">
-          <tbody><tr align="center">
-            <td>
-                <img src="./images/watercolor1/fruits1_crop.png" align="middle" width="100%">
-                <figcaption align="middle">original</figcaption>
-            </td>
-            <td>
-                <img src="./images/watercolor1/fruits_cropp.gif" align="middle" width="100%">
-                <figcaption align="middle">simulation</figcaption>
-            </td>
-          </tr>
-        </tbody></table>
+       
 
       <h3 align="middle">Toon shader</h3>
       <table style="width:100%">
@@ -244,6 +260,56 @@
         </tr>
       </tbody></table>
 
+      <h3 align="middle">Shaders in Unity</h3>
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/unity/unity0.png" align="middle" width="100%">
+              <figcaption align="middle">From right to left: textured shadow toon shader, toon shader, hatching shader, phong shader</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/unity/unity1.png" align="middle" width="50%">
+              <figcaption align="middle">paint-like shader</figcaption>
+          </td>
+          <td>
+              <img src="images/unity/unity2.png" align="middle" width="50%">
+              <figcaption align="middle">watercolor shader</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/unity/unity3.png" align="middle" width="50%">
+              <figcaption align="middle">paint-like shader - zoomed in</figcaption>
+          </td>
+          <td>
+              <img src="images/unity/unity4.png" align="middle" width="50%">
+              <figcaption align="middle">watercolor shader - zoomed in</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <h3 align="middle">Watercolor simulation shader</h3>
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="./images/watercolor1/fruits1_crop.png" align="middle" width="100%">
+              <figcaption align="middle">original</figcaption>
+          </td>
+          <td>
+              <img src="./images/watercolor1/fruits_cropp.gif" align="middle" width="100%">
+              <figcaption align="middle">simulation</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+
 
     </p>
     <br>
@@ -262,20 +328,35 @@
       <li><a href="https://lettier.github.io/3d-game-shaders-for-beginners/outlining.html">https://lettier.github.io/3d-game-shaders-for-beginners/outlining.html</a></li>
     </ul>
 
+    <h3 align="middle">Paint-like shader</h3>
+    <ul align="left">
+      <li><a href="https://stackoverflow.com/questions/5830139/how-can-i-do-these-image-processing-tasks-using-opengl-es-2-0-shaders">Image Processing Tasks using OpenGL - oil painting conversion</a></li>
+      <li><a href="https://www.youtube.com/watch?v=__vR3H5g5Qk">Hybrid Kuwahara Filtering - Unity Shader</a>
+    </ul>  
+
     <h3 align="middle">Watercolor simulation shader</h3>
     <ul align="left">
-        <ol>
-            <li>David Small. Simulating Watercolor by Modeling Diffusion, Pigment, and Paper Fibers.” In Proceedings of SPIE '91. February 1991.</li>
-        </ol>
+      David Small. Simulating Watercolor by Modeling Diffusion, Pigment, and Paper Fibers.” In Proceedings of SPIE '91. February 1991.
     </ul>  
     
     <br>
 
     <h2 align="middle">Contributions</h2>
-    <ul align="left">
-        <p>Alex: Wrote watercolor simulation, co-wrote toon and watercolor shaders, and contributed to each of the deliverables for the proposal, milestone, final presentation, and final report</p>
-        
-    </ul>
+    <p align="left">
+      Alexander Sun: Wrote watercolor simulation, co-wrote toon and watercolor shaders, experimented with rendering custom meshes using homework 4 code, helped debug shaders, helped create the website, and made the videos. 
+    </p>
+
+    <p align="left">
+      Ryland Hu: Implemented the hatching shader in OpenGL, helped create the toon shader, researched toon shading methods and drawing shadows, helped debug shaders and render objects, helped create textures and the website. 
+    </p>
+
+    <p align="left">
+      Sydney Tang: Integrated the hatching shader into Unity, experimented with custom shaders in Blender, researched different shader styles and renderers, helped rendering objects, helped create textures and video, and created the slides. 
+    </p>
+
+    <p align="left">
+      Jaeha Yi: Wrote the paint-like shader, helped create the toon shader, integrated watercolor and toon shaders into Unity, researched Unity's render pipeline, helped rendering objects in Unity, and helped create the website. 
+    </p>
     
     <br>
 
